@@ -1,0 +1,197 @@
+{
+  "header": {
+    "vendor_details": {
+      "company_name_en": "",
+      "company_name_ar": "",
+      "address": "",
+      "contact_info": {
+        "head_office_tel": "",
+        "head_office_fax": "",
+        "showroom_tel": "",
+        "showroom_fax": "",
+        "email": ""
+      },
+      "tax_registration_number": "",
+      "excise_registration_number": ""
+    },
+
+    "invoice_details": {
+      "invoice_number": "",
+      "invoice_date": "",
+      "invoice_type": "",
+      "order_number": "",
+      "order_date": "",
+      "page_number": "",
+      "purchase_order_number": "",
+      "due_date": "",
+      "payment_terms": "",
+      "personnel": {
+        "sales_person": "",
+        "supervisor": "",
+        "merchandiser": ""
+      }
+    },
+
+    "customer_details": {
+      "customer_code": "",
+      "name": "",
+      "address": "",
+      "phone": "",
+      "email": "",
+      "trn": "",
+      "customer_vat": ""
+    }
+  },
+
+  "document_type": "invoice",
+
+  "company": {
+    "name": "",
+    "address": {
+      "street": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "country": ""
+    },
+    "contact": {
+      "phone": "",
+      "email": "",
+      "website": ""
+    },
+    "tax_id": ""
+  },
+
+  "bill_to": {
+    "name": "",
+    "company": "",
+    "address": {
+      "street": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "country": ""
+    },
+    "phone": "",
+    "email": "",
+    "customer_id": ""
+  },
+
+  "ship_to": {
+    "name": "",
+    "company": "",
+    "address": {
+      "street": "",
+      "city": "",
+      "state": "",
+      "zip": "",
+      "country": ""
+    }
+  },
+
+
+  "line_items": [
+    {
+      "line_number": null,
+
+      "prod_code": "",
+      "barcode": "",
+
+      "product_name": "",
+      "description": "",
+
+      "packing": "",
+      "unit": "",
+      "unit_of_measure": "",
+
+      "qty": null,
+      "quantity": null,
+      "list_value": null,
+
+      "unit_price": null,
+
+      "gross_amount": null,
+      "discount": null,
+
+      "taxed": false,
+      "vat_percent": null,
+
+      "net_value": null,
+
+      "excise": null,
+      "total_incl_excise": null,
+
+      "vat_amount": null,
+
+      "amount": null
+      
+    }
+  ],
+
+  "summary": {
+    "subtotal": null,
+    "discount_total": null,
+    "taxable_amount": null,
+
+    "tax_rate_percent": null,
+    "vat_total": null,
+
+    "shipping": null,
+    "other_charges": null,
+
+    "total_amount": null,
+    "amount_paid": null,
+    "balance_due": null,
+    "currency": ""
+  },
+
+  "payment_instructions": {
+    "payable_to": "",
+    "payment_method": "",
+    "bank_details": {
+      "bank_name": "",
+      "account_name": "",
+      "account_number": "",
+      "ifsc_swift": ""
+    },
+    "notes": []
+  },
+
+  "codes": [
+    {
+      "type": "",
+      "value": "",
+      "confidence": 1.0
+    }
+  ],
+
+  "footer": {
+    "totals_summary": {
+      "total_discount": null,
+      "total_net_inv_value": null,
+      "list_value_total": null,
+      "total_excise": null,
+      "total_incl_excise": null,
+      "total_vat_aed": null,
+      "total_incl_vat_aed": null,
+      "amount_in_words": ""
+    },
+
+    "remarks_and_notes": {
+      "rebate_note": "",
+      "payment_terms": "",
+      "return_policy": "",
+      "delivery_remarks": ""
+    },
+
+    "processing_info": {
+      "prepared_by": "",
+      "printed_by": "",
+      "print_timestamp": "",
+      "warehouse_loc": ""
+    },
+
+    "notes": [],
+    "thank_you_note": ""
+  }
+}

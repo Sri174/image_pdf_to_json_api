@@ -1,0 +1,14 @@
+# Render service definition for this invoice processing app
+# After adding this file, create the service in Render (https://render.com) and connect it to this repo.
+# Do NOT store secrets in the repo. Set `GEMINI_API_KEY` and other secrets via Render's Dashboard (Environment > Environment Variables).
+
+services:
+  - type: web
+    name: invoice-processor
+    env: docker
+    region: oregon
+    plan: free
+    repo: https://github.com/Sri174/image_pdf_to_json.git
+    branch: main
+    autoDeploy: true
+
