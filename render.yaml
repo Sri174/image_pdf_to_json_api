@@ -1,14 +1,23 @@
-# Render service definition for this invoice processing app
-# After adding this file, create the service in Render (https://render.com) and connect it to this repo.
-# Do NOT store secrets in the repo. Set `GEMINI_API_KEY` and other secrets via Render's Dashboard (Environment > Environment Variables).
+# Render service definition for Invoice OCR API
+# Deploy Instructions:
+# 1. Push this code to your GitHub repo
+# 2. Go to render.com and create a new Web Service
+# 3. Connect your GitHub repo
+# 4. Render will auto-detect this file
+# 5. Add GEMINI_API_KEY in Environment Variables section
+# 6. Deploy!
 
 services:
   - type: web
-    name: invoice-processor
+    name: invoice-ocr-api
     env: docker
     region: oregon
     plan: free
-    repo: https://github.com/Sri174/image_pdf_to_json.git
-    branch: main
-    autoDeploy: true
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: GEMINI_API_KEY
+        sync: false  # Set this manually in Render Dashboard
+    healthCheckPath: /health
 

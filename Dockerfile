@@ -1,7 +1,8 @@
 FROM python:3.11-slim
 
-# System dependencies
+# System dependencies for OCR, image processing, and barcode reading
 RUN apt-get update && apt-get install -y \
+    tesseract-ocr \
     libzbar0 \
     libgl1 \
     poppler-utils \
@@ -14,6 +15,10 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-EXPOSE 8501
+# Create runs directory for output files
+RUN mkdir -p runs
 
-CMD streamlit run streamlit_app.py --server.port=$PORT --server.address=0.0.0.0 --server.headless true
+EXPOSE 8000
+
+# Run FastAPI server with uvicorn
+CMD uvicorn api_server:app --host 0.0.0.0 --port $PORT
