@@ -1,5 +1,6 @@
 from fastapi import FastAPI, Request, File, UploadFile
 from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
 import glob
@@ -26,7 +27,21 @@ if os.path.exists(env_path):
     except Exception:
         pass
 
-app = FastAPI()
+app = FastAPI(
+    title="Invoice OCR API",
+    description="AI-powered invoice processing with Gemini & Tesseract OCR",
+    version="1.0.0",
+    timeout=120  # 2 minute timeout for long processing
+)
+
+# Enable CORS for Postman and web clients
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 RUNS_DIR = os.path.join(os.getcwd(), "runs")
 HISTORY_FILE = os.path.join(RUNS_DIR, "history.json")
@@ -43,8 +58,14 @@ async def process_ocr(file: UploadFile = File(...)):
     """
     Upload an invoice PDF or image and extract structured JSON via OCR.
     Returns extracted invoice data as JSON.
+    
+    Note: Processing may take 10-30 seconds depending on file size and Gemini API.
+    Increase timeout in your HTTP client if needed.
     """
     tmp_path = None
+    print(f"\n{'='*70}")
+    print(f"[API] New OCR request received")
+    print(f"{'='*70}")
     try:
         print(f"\n[OCR] Processing file: {file.filename}")
         # Import processing modules
@@ -168,6 +189,7 @@ def health():
 if __name__ == "__main__":
     try:
         import uvicorn
-        uvicorn.run(app, host="127.0.0.1", port=8000)
+        # Bind to 0.0.0.0 to allow access from other IP addresses
+        uvicorn.run(app, host="0.0.0.0", port=8000)
     except Exception:
-        print("Run with: uvicorn api_server:app --reload")
+        print("Run with: uvicorn api_server:app --host 0.0.0.0 --port 8000 --reload")
